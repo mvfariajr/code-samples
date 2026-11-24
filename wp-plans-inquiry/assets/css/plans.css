@@ -1,0 +1,218 @@
+/*
+ * Plans page (template-plans.php).
+ * Every rule is scoped under .fd-plans. Oswald and Noticia Text are loaded by Divi's theme options.
+ * The Superfly tap-through fix this page needs lives in style.css, since it applies site-wide.
+ */
+
+.fd-plans{
+  --plum:#482149;
+  --plum-deep:#2d1430;
+  --orange:#e96524;
+  --orange-ink:#c24f14;
+  --blue:#177abf;
+  --navy:#054f84;
+  --mint:#65bb99;
+  --ground:#f5f3f5;
+  --surface:#ffffff;
+  --ink:#2c2530;
+  --muted:#6b6270;
+  --line:#e2dce3;
+  --hero-bg:var(--plum);
+  --hero-ink:#ffffff;
+  --hero-muted:rgba(255,255,255,.72);
+  --display:"Oswald",Helvetica,Arial,sans-serif;
+  --body:"Noticia Text",Georgia,"Times New Roman",serif;
+  display:block;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  font-weight:400;
+  line-height:1.65;
+}
+
+/* Reset the Divi element styles this page relies on */
+.fd-plans *,.fd-plans *::before,.fd-plans *::after{box-sizing:border-box}
+.fd-plans [hidden]{display:none!important}
+.fd-plans p{margin:0;padding:0}
+.fd-plans ul{margin:0;padding:0;line-height:inherit}
+.fd-plans h1,.fd-plans h2,.fd-plans h3{margin:0;padding:0;color:inherit;font-family:var(--display);line-height:1.1;letter-spacing:normal;text-transform:none;text-wrap:balance}
+.fd-plans strong,.fd-plans b{font-weight:700}
+.fd-plans a{color:var(--blue)}
+.fd-plans a:focus-visible,.fd-plans button:focus-visible,.fd-plans summary:focus-visible,.fd-plans input:focus-visible,.fd-plans select:focus-visible,.fd-plans textarea:focus-visible,.fd-plans .notice:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.fd-plans .notice:focus:not(:focus-visible){outline:none}
+
+/* Keep form fields clear of the fixed logo when an error link or focus scrolls to them */
+.fd-plans .form-card [id]{scroll-margin-top:90px}
+
+.fd-plans .wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
+@media (max-width:480px){.fd-plans .wrap{padding-inline:16px}}
+.fd-plans .eyebrow,.fd-plans .btn,.fd-plans .price,.fd-plans .tier-name{font-family:var(--display)}
+.fd-plans .eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;font-weight:500;color:var(--orange-ink)}
+.fd-plans section{padding-block:88px}
+@media (max-width:700px){.fd-plans section{padding-block:60px}}
+.fd-plans .section-head{display:grid;gap:14px;max-width:640px;margin-bottom:44px}
+.fd-plans .section-head h2{font-size:clamp(2rem,4.2vw,2.8rem);font-weight:500;text-transform:uppercase;color:var(--plum);letter-spacing:.01em}
+.fd-plans .section-head p{color:var(--muted);max-width:60ch}
+
+/* hero */
+.fd-plans .hero{background:var(--hero-bg);color:var(--hero-ink);padding-block:72px 96px;position:relative;overflow:hidden}
+.fd-plans .hero::after{content:"";position:absolute;right:-120px;top:-60px;width:520px;height:520px;border-radius:50%;border:1px solid rgba(255,255,255,.08);box-shadow:0 0 0 70px rgba(255,255,255,.025),0 0 0 140px rgba(255,255,255,.02)}
+.fd-plans .hero .wrap{position:relative;z-index:1;display:grid;gap:26px;max-width:1120px}
+/* Divi's transparent header: the logo overlaps the top of the hero, and on desktop the menu panel covers its right side */
+.fd-plans .hero{padding-top:120px}
+@media (min-width:981px){.fd-plans .hero .wrap{padding-right:324px}}
+.fd-plans .hero h1{font-size:clamp(2.6rem,6.4vw,4.6rem);font-weight:500;max-width:14ch;letter-spacing:.005em;color:var(--hero-ink)}
+.fd-plans .hero h1 em{font-style:normal;color:var(--orange)}
+.fd-plans .hero .lede{font-size:1.2rem;color:var(--hero-muted);max-width:56ch}
+.fd-plans .hero .eyebrow{color:#f3a27a}
+.fd-plans .hero-actions{display:flex;gap:22px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.fd-plans .btn{display:inline-block;background:var(--orange);color:#fff;text-decoration:none;text-transform:uppercase;letter-spacing:.1em;font-size:.95rem;font-weight:500;line-height:1.65;padding:15px 28px;border:0;border-radius:2px;cursor:pointer;transition:background .15s}
+.fd-plans .btn:hover{background:#d4561a;color:#fff}
+.fd-plans .btn-ghost{background:transparent;color:var(--plum);box-shadow:inset 0 0 0 1.5px currentColor}
+.fd-plans .btn-ghost:hover{background:var(--plum);color:#fff}
+.fd-plans .hero-actions a.text{color:#fff;font-size:1rem;text-decoration:underline}
+.fd-plans .hero-facts{display:flex;gap:36px;flex-wrap:wrap;margin:28px 0 0;padding-top:26px;border-top:1px solid rgba(255,255,255,.14);max-width:760px}
+.fd-plans .hero-facts div{display:grid;gap:2px}
+.fd-plans .hero-facts dt{font-family:var(--display);text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:rgba(255,255,255,.55)}
+.fd-plans .hero-facts dd{margin:0;font-family:var(--display);font-size:1.15rem;font-weight:400}
+
+/* steps */
+.fd-plans .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;counter-reset:step}
+@media (max-width:820px){.fd-plans .steps{grid-template-columns:1fr;gap:28px}}
+.fd-plans .step{display:grid;gap:10px;align-content:start;border-top:2px solid var(--plum);padding-top:20px}
+.fd-plans .step::before{counter-increment:step;content:"Step " counter(step);font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:var(--orange-ink)}
+.fd-plans .step h3{font-size:1.5rem;font-weight:500}
+.fd-plans .step p{color:var(--muted)}
+
+/* plans */
+.fd-plans .plans-sec{background:var(--surface);border-block:1px solid var(--line)}
+.fd-plans .tiers{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:var(--ground)}
+@media (max-width:980px){.fd-plans .tiers{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.fd-plans .tiers{grid-template-columns:1fr}}
+.fd-plans .tier{padding:30px 26px;display:grid;grid-template-rows:auto auto auto auto 1fr auto;gap:14px;border-right:1px solid var(--line);background:var(--surface)}
+.fd-plans .tier:last-child{border-right:0}
+@media (max-width:980px){.fd-plans .tier:nth-child(2){border-right:0}.fd-plans .tier:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:560px){.fd-plans .tier{border-right:0;border-bottom:1px solid var(--line)}.fd-plans .tier:last-child{border-bottom:0}}
+.fd-plans .tier-name{text-transform:uppercase;letter-spacing:.12em;font-size:.95rem;font-weight:500;color:var(--plum)}
+.fd-plans .hours{font-family:var(--display);font-size:2.9rem;font-weight:400;line-height:1;font-variant-numeric:tabular-nums}
+.fd-plans .hours small{font-size:1rem;color:var(--muted);letter-spacing:.04em;margin-left:4px}
+.fd-plans .price{font-size:1.05rem;font-variant-numeric:tabular-nums}
+.fd-plans .price strong{font-weight:500}
+.fd-plans .price span{color:var(--muted)}
+.fd-plans .response{font-size:.92rem;color:var(--ink);display:flex;gap:8px;align-items:baseline}
+.fd-plans .response::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--mint);transform:translateY(-1px)}
+.fd-plans .tier .fit{color:var(--muted);font-size:.95rem}
+.fd-plans .tier .btn{justify-self:start;margin-top:6px;font-size:.85rem;padding:12px 20px}
+.fd-plans .plans-note{margin-top:22px;color:var(--muted);font-size:.98rem}
+.fd-plans .plans-note strong{color:var(--ink);font-weight:700}
+
+.fd-plans .covers{margin-top:64px;max-width:860px}
+.fd-plans .covers h3{font-size:1.35rem;font-weight:500;text-transform:uppercase;letter-spacing:.04em;margin-bottom:14px}
+.fd-plans .tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.fd-plans .tags li{border:1px solid var(--line);background:var(--ground);padding:6px 12px;font-size:.93rem;border-radius:2px}
+
+/* care */
+.fd-plans .care{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+@media (max-width:900px){.fd-plans .care{grid-template-columns:1fr;gap:36px}}
+.fd-plans .care-price{background:var(--surface);border:1px solid var(--line);padding:32px}
+.fd-plans .care-price .big{font-family:var(--display);font-size:3.6rem;font-weight:400;line-height:1;font-variant-numeric:tabular-nums}
+.fd-plans .care-price .big small{font-size:1.05rem;color:var(--muted);margin-left:6px}
+.fd-plans .rates{list-style:none;padding:0;margin:24px 0 0;display:grid}
+.fd-plans .rates li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line);font-size:.97rem}
+.fd-plans .audit-fee{margin-top:18px;padding-top:16px;border-top:2px solid var(--orange);font-size:.95rem;color:var(--muted)}
+.fd-plans .audit-fee b{font-family:var(--display);font-weight:500;color:var(--ink);letter-spacing:.02em}
+.fd-plans .rates li b{font-family:var(--display);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fd-plans .care-list h3,.fd-plans .audit h3{font-size:1.35rem;font-weight:500;text-transform:uppercase;letter-spacing:.04em;margin-bottom:12px}
+.fd-plans .checks{list-style:none;padding:0;margin:0 0 26px;display:grid;gap:10px}
+.fd-plans .checks li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.fd-plans .checks li::before{content:"";width:14px;height:8px;border-left:2px solid var(--mint);border-bottom:2px solid var(--mint);transform:rotate(-45deg) translate(2px,8px)}
+.fd-plans .care-list .excl{color:var(--muted);font-size:.97rem}
+.fd-plans .audit{margin-top:28px;padding:24px 26px;border-left:3px solid var(--orange);background:var(--surface)}
+.fd-plans .audit p{color:var(--muted);font-size:.97rem}
+.fd-plans .audit .btn{margin-top:18px}
+
+/* billing */
+.fd-plans .billing-sec{background:var(--surface);border-block:1px solid var(--line)}
+.fd-plans .billing{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px;margin:0}
+@media (max-width:760px){.fd-plans .billing{grid-template-columns:1fr}}
+.fd-plans .billing div{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
+@media (max-width:480px){.fd-plans .billing div{grid-template-columns:1fr;gap:4px}}
+.fd-plans .billing dt{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--plum);padding-top:3px}
+.fd-plans .billing dd{margin:0}
+
+/* faq */
+.fd-plans .faq{max-width:780px;display:grid}
+.fd-plans .faq details{border-top:1px solid var(--line)}
+.fd-plans .faq details:last-child{border-bottom:1px solid var(--line)}
+.fd-plans .faq summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;font-family:var(--display);font-size:1.2rem;font-weight:400;position:relative}
+.fd-plans .faq summary::-webkit-details-marker{display:none}
+.fd-plans .faq summary::after{content:"+";position:absolute;right:4px;top:14px;font-size:1.6rem;color:var(--orange-ink);transition:transform .2s}
+.fd-plans .faq details[open] summary::after{transform:rotate(45deg)}
+.fd-plans .faq details p{padding-bottom:22px;color:var(--muted);max-width:65ch}
+
+/* form */
+.fd-plans .start{background:var(--hero-bg);color:#fff}
+.fd-plans .start .section-head h2{color:#fff}
+.fd-plans .start .section-head p{color:var(--hero-muted)}
+.fd-plans .start .eyebrow{color:#f3a27a}
+.fd-plans .form-card{display:grid;gap:28px;background:var(--surface);color:var(--ink);padding:36px;max-width:860px}
+@media (max-width:560px){.fd-plans .form-card{padding:24px 18px}}
+.fd-plans form{display:grid;gap:34px;margin:0}
+.fd-plans .group{border:0;margin:0;padding:0;display:grid;gap:16px;min-width:0}
+.fd-plans .group legend{font-family:var(--display);text-transform:uppercase;letter-spacing:.1em;font-size:1.05rem;font-weight:500;padding:0 0 14px;display:flex;align-items:center;gap:12px;width:100%;border-bottom:1px solid var(--line);margin-bottom:4px;color:var(--ink)}
+.fd-plans .gnum{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--plum);color:#fff;font-size:.85rem;letter-spacing:0}
+.fd-plans .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px 22px}
+@media (max-width:640px){.fd-plans .grid2{grid-template-columns:1fr}}
+.fd-plans .choices{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:760px){.fd-plans .choices{grid-template-columns:repeat(2,1fr)}}
+.fd-plans .choice{position:relative;display:grid;gap:2px;align-content:start;margin:0;padding:16px 16px 14px;border:1.5px solid var(--line);background:var(--ground);border-radius:3px;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.65;transition:border-color .15s,background .15s}
+.fd-plans .choice input{position:absolute;opacity:0;pointer-events:none;margin:0}
+/* style.css hides every radio and checkbox (display:none) and draws image glyphs for CF7 forms.
+   Undo that here so the inputs stay reachable by keyboard and screen readers. */
+.fd-plans .choice input,.fd-plans .toggle input{display:block;top:0;left:0;width:1px;height:1px}
+.fd-plans .choice input + span::before,.fd-plans .toggle input + span::before{content:none;display:none}
+.fd-plans .choice:hover{border-color:var(--muted)}
+.fd-plans .choice .c-name{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:1rem;font-weight:500}
+.fd-plans .choice .c-hours{font-family:var(--display);font-size:1.5rem;font-weight:400;line-height:1.2;font-variant-numeric:tabular-nums}
+.fd-plans .choice .c-price{font-family:var(--body);font-size:.88rem;color:var(--muted);font-weight:400}
+.fd-plans .choice.alt{grid-column:span 2;display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-block:14px}
+@media (max-width:760px){.fd-plans .choice.alt{grid-column:span 1;display:grid}}
+.fd-plans .choice:has(input:checked){border-color:var(--orange);background:var(--surface);box-shadow:inset 0 0 0 1px var(--orange)}
+.fd-plans .choice:has(input:checked)::after{content:"";position:absolute;top:12px;right:12px;width:10px;height:10px;border-radius:50%;background:var(--orange)}
+.fd-plans .choice:has(input:focus-visible){outline:3px solid var(--orange);outline-offset:2px}
+.fd-plans .toggle{display:flex;align-items:center;gap:14px;margin:0;cursor:pointer;font-family:var(--body);text-transform:none;letter-spacing:0;font-size:1rem;font-weight:400;position:relative}
+.fd-plans .toggle input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.fd-plans .switch{flex:none;width:46px;height:26px;border-radius:13px;background:var(--line);position:relative;transition:background .15s}
+.fd-plans .switch::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+.fd-plans .toggle input:checked + .switch{background:var(--mint)}
+.fd-plans .toggle input:checked + .switch::after{transform:translateX(20px)}
+.fd-plans .toggle input:focus-visible + .switch{outline:3px solid var(--orange);outline-offset:2px}
+.fd-plans .c-rate{color:var(--muted);font-size:.92rem}
+.fd-plans .err{border-left:3px solid var(--orange);padding:12px 14px;background:var(--ground);font-size:.95rem}
+.fd-plans .err ul{list-style:none;margin-top:6px;display:grid;gap:4px}
+.fd-plans .err a{color:var(--ink)}
+.fd-plans .field{display:grid;gap:6px;align-content:start}
+.fd-plans .field.full{grid-column:1/-1}
+.fd-plans #f-invoice-wrap{margin-top:12px}
+.fd-plans .lbl{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;font-weight:500;color:var(--ink)}
+.fd-plans label .opt{text-transform:none;letter-spacing:0;color:var(--muted);font-weight:400;font-family:var(--body);font-size:.85rem}
+.fd-plans .field input,.fd-plans .field select,.fd-plans .field textarea{font:inherit;font-size:1rem;line-height:1.4;color:var(--ink);background:var(--ground);border:1px solid var(--line);border-radius:2px;padding:11px 12px;width:100%;min-width:0;margin:0;box-shadow:none}
+.fd-plans .field input[aria-invalid="true"],.fd-plans .field select[aria-invalid="true"],.fd-plans .field textarea[aria-invalid="true"]{border-color:var(--orange-ink)}
+.fd-plans .field textarea{min-height:96px;resize:vertical}
+/* One height for every single-line field. iOS Safari otherwise collapses an empty date input
+   and ignores padding on a native select. */
+.fd-plans .field input,.fd-plans .field select{height:46px}
+.fd-plans .field input[type="date"],.fd-plans .field select{-webkit-appearance:none;appearance:none}
+.fd-plans .field input[type="date"]::-webkit-date-and-time-value{text-align:left;min-height:1.4em}
+.fd-plans .field select{padding-right:40px;background:var(--ground) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%236b6270' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 14px center;text-overflow:ellipsis}
+.fd-plans .field-err{font-size:.88rem;color:var(--orange-ink);line-height:1.5}
+.fd-plans .help{font-size:.88rem;color:var(--muted);line-height:1.5}
+.fd-plans .form-foot{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:6px}
+.fd-plans .form-foot p{font-size:.9rem;color:var(--muted);max-width:44ch}
+.fd-plans .sent{border-left:3px solid var(--mint);padding:14px 16px;background:var(--ground)}
+.fd-plans .another{font-size:.95rem}
+.fd-plans .link-btn{background:none;border:0;padding:0;margin:0;font:inherit;color:var(--blue);text-decoration:underline;cursor:pointer}
+.fd-plans .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+@media (prefers-reduced-motion:reduce){.fd-plans *{transition:none!important}}
